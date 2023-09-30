@@ -6,15 +6,18 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
+@RequestMapping("/home")
 public class HomeController {
 
 	/*
 	 * This method is for Model
 	 */
-	@RequestMapping("/home")
+//	@RequestMapping("/home")
+	@RequestMapping(method = RequestMethod.GET)
 	public String home(Model model) {
 		System.out.println("Home api calling...!");
 		model.addAttribute("name", "Parth Kathiriya");
@@ -55,6 +58,15 @@ public class HomeController {
 		modelandview.setViewName("help");
 
 		return modelandview;
+	}
+
+	/*
+	 * This method is for Contact Form. data get html form to controller.
+	 */
+	@RequestMapping("/contact")
+	public String contact() {
+		System.out.println("This is Contact page!!");
+		return "contact";
 	}
 
 }
